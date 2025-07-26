@@ -14,11 +14,9 @@ export function App() {
       <ul>
         {recipes.map((recipe) => {
           return (
-            <Recipe
-              key={recipe.id}
-              name={recipe.name}
-              isBeginner={recipe.isBeginner}
-            />
+            <li key={recipe.id}>
+              <Recipe name={recipe.name} isBeginner={recipe.isBeginner} />
+            </li>
           );
         })}
       </ul>
