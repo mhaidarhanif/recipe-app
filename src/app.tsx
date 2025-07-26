@@ -10,9 +10,11 @@ export function App() {
 }
 
 export function Recipe() {
+  const name = "Fried Rice";
+
   return (
     <div>
-      <h2>Fried Rice</h2>
+      <h2>{name}</h2>
     </div>
   );
 }
