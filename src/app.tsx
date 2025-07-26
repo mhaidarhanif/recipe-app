@@ -4,14 +4,14 @@ export function App() {
       <h1>Recipe App</h1>
       <button>Click me</button>
 
-      <Recipe />
+      <Recipe name="Fried Rice" />
+      <Recipe name="Chicken Noodle" />
+      <Recipe name="Scrambled Egg" />
     </div>
   );
 }
 
-export function Recipe() {
-  const name = "Fried Rice";
-
+export function Recipe({ name }: { name: string }) {
   return (
     <div>
       <h2>{name}</h2>
