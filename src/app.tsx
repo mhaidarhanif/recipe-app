@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const recipes = [
   { id: 1, name: "Hot Water", isBeginner: true },
   { id: 2, name: "Fried Rice", isBeginner: false },
@@ -10,10 +12,10 @@ const recipes = [
 export function App() {
   return (
     <div className="flex justify-center">
-      <section className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8">
+      <section className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8 dark:bg-green-950">
         <h1 className="text-3xl font-bold">Recipe App</h1>
 
-        <button>Add Recipe</button>
+        <Button>Add Recipe</Button>
 
         <ul className="space-y-4">
           {recipes.map((recipe) => {
@@ -37,7 +39,7 @@ export function Recipe({
   isBeginner?: boolean;
 }) {
   return (
-    <div className="rounded-lg border-2 border-green-200 bg-green-50 p-4">
+    <div className="rounded-lg border-2 border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900">
       <h2 className="text-xl font-semibold">
         {name} {isBeginner && "🔰"}
       </h2>
