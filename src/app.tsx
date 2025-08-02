@@ -9,17 +9,20 @@ const recipes = [
 
 export function App() {
   return (
-    <div>
-      <h1>Recipe App</h1>
-      <ul>
-        {recipes.map((recipe) => {
-          return (
-            <li key={recipe.id}>
-              <Recipe name={recipe.name} isBeginner={recipe.isBeginner} />
-            </li>
-          );
-        })}
-      </ul>
+    <div className="flex justify-center">
+      <section className="p-10 space-y-10 w-full max-w-xl">
+        <h1 className="text-3xl font-bold">Recipe App</h1>
+
+        <ul className="space-y-4">
+          {recipes.map((recipe) => {
+            return (
+              <li key={recipe.id}>
+                <Recipe name={recipe.name} isBeginner={recipe.isBeginner} />
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </div>
   );
 }
@@ -32,10 +35,11 @@ export function Recipe({
   isBeginner?: boolean;
 }) {
   return (
-    <div>
-      <h2>
+    <div className="p-4 border-2 rounded-lg border-green-200 bg-green-50">
+      <h2 className="text-xl font-semibold">
         {name} {isBeginner && "🔰"}
       </h2>
+
       {isBeginner && <p>✅ Beginner Friendly</p>}
       {!isBeginner && <p>⭐ Experienced Cook Only</p>}
     </div>
