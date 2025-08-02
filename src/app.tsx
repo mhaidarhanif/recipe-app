@@ -10,8 +10,10 @@ const recipes = [
 export function App() {
   return (
     <div className="flex justify-center">
-      <section className="w-full max-w-xl space-y-10 p-10">
+      <section className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8">
         <h1 className="text-3xl font-bold">Recipe App</h1>
+
+        <button>Add Recipe</button>
 
         <ul className="space-y-4">
           {recipes.map((recipe) => {
