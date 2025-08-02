@@ -10,7 +10,7 @@ const recipes = [
 export function App() {
   return (
     <div className="flex justify-center">
-      <section className="p-10 space-y-10 w-full max-w-xl">
+      <section className="w-full max-w-xl space-y-10 p-10">
         <h1 className="text-3xl font-bold">Recipe App</h1>
 
         <ul className="space-y-4">
@@ -35,7 +35,7 @@ export function Recipe({
   isBeginner?: boolean;
 }) {
   return (
-    <div className="p-4 border-2 rounded-lg border-green-200 bg-green-50">
+    <div className="rounded-lg border-2 border-green-200 bg-green-50 p-4">
       <h2 className="text-xl font-semibold">
         {name} {isBeginner && "🔰"}
       </h2>
