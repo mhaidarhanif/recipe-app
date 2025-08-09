@@ -1,4 +1,11 @@
-export const recipes = [
+export type DataRecipe = {
+  id: number;
+  name: string;
+  description: string;
+  isBeginner: boolean;
+};
+
+export const dataRecipes: DataRecipe[] = [
   {
     id: 1,
     name: "Hot Water",

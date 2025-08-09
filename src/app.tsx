@@ -9,13 +9,31 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { recipes } from "@/modules/recipe/data";
+import { dataRecipes, type DataRecipe } from "@/modules/recipe/data";
+import { useState } from "react";
 
 export function App() {
+  const [recipes, setRecipes] = useState(dataRecipes);
+
+  const addRecipe = () => {
+    const newRecipe: DataRecipe = {
+      id: recipes.length + 1,
+      name: "New Recipe",
+      description: "Details of the cooking",
+      isBeginner: true,
+    };
+
+    const updatedRecipes = [...recipes, newRecipe];
+
+    setRecipes(updatedRecipes);
+  };
+
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8 dark:bg-green-950">
         <h1 className="text-3xl font-bold">Recipe App</h1>
+
+        <Button onClick={addRecipe}>Add Recipe</Button>
 
         <section className="mt-8 max-w-md">
           <Card>
