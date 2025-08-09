@@ -28,6 +28,11 @@ export function App() {
     setRecipes(updatedRecipes);
   };
 
+  const removeRecipe = (id: number) => {
+    const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
+    setRecipes(updatedRecipes);
+  };
+
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8 dark:bg-green-950">
@@ -77,6 +82,13 @@ export function App() {
               return (
                 <li key={recipe.id}>
                   <Recipe name={recipe.name} isBeginner={recipe.isBeginner} />
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => removeRecipe(recipe.id)}
+                  >
+                    Delete
+                  </Button>
                 </li>
               );
             })}
