@@ -84,16 +84,11 @@ export function App() {
               return (
                 <li key={recipe.id}>
                   <RecipeCard
+                    id={recipe.id}
                     name={recipe.name}
                     isBeginner={recipe.isBeginner}
+                    removeRecipe={removeRecipe}
                   />
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => removeRecipe(recipe.id)}
-                  >
-                    Delete
-                  </Button>
                 </li>
               );
             })}
