@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { dataRecipes, type DataRecipe } from "@/modules/recipe/data";
-import { useState } from "react";
+import { RecipeCard } from "@/modules/recipe/components/recipe-card";
 
 export function App() {
   const [recipes, setRecipes] = useState(dataRecipes);
@@ -81,7 +83,10 @@ export function App() {
             {recipes.map((recipe) => {
               return (
                 <li key={recipe.id}>
-                  <Recipe name={recipe.name} isBeginner={recipe.isBeginner} />
+                  <RecipeCard
+                    name={recipe.name}
+                    isBeginner={recipe.isBeginner}
+                  />
                   <Button
                     variant="destructive"
                     size="sm"
@@ -95,25 +100,6 @@ export function App() {
           </ul>
         </section>
       </div>
-    </div>
-  );
-}
-
-export function Recipe({
-  name,
-  isBeginner,
-}: {
-  name: string;
-  isBeginner?: boolean;
-}) {
-  return (
-    <div className="rounded-lg border-2 border-green-200 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900">
-      <h2 className="text-xl font-semibold">
-        {name} {isBeginner && "🔰"}
-      </h2>
-
-      {isBeginner && <p>✅ Beginner Friendly</p>}
-      {!isBeginner && <p>⭐ Experienced Cook Only</p>}
     </div>
   );
 }
