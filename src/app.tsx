@@ -35,6 +35,21 @@ export function App() {
     setRecipes(updatedRecipes);
   };
 
+  const handleAddRecipe = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name");
+    const description = formData.get("description");
+
+    const newRecipe = {
+      name,
+      description,
+    };
+
+    console.log(newRecipe);
+  };
+
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8 dark:bg-green-950">
@@ -51,13 +66,17 @@ export function App() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form className="flex flex-col gap-4">
+              <form
+                onSubmit={handleAddRecipe}
+                method="post"
+                className="flex flex-col gap-4"
+              >
                 <div className="flex flex-col gap-2">
-                  <Label htmlFor="recipe-title">Title</Label>
+                  <Label htmlFor="recipe-name">Recipe Name</Label>
                   <Input
-                    id="recipe-title"
-                    name="title"
-                    placeholder="Recipe title"
+                    id="recipe-name"
+                    name="name"
+                    placeholder="Recipe name"
                     required
                   />
                 </div>
