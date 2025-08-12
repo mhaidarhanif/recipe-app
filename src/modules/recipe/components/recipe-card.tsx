@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 export function RecipeCard({
   id,
   name,
+  description,
   isBeginner,
   removeRecipe,
 }: {
   id: number;
   name: string;
+  description: string;
   isBeginner?: boolean;
   removeRecipe: (id: number) => void;
 }) {
@@ -17,8 +19,7 @@ export function RecipeCard({
         {name} {isBeginner && "🔰"}
       </h2>
 
-      {isBeginner && <p>✅ Beginner Friendly</p>}
-      {!isBeginner && <p>⭐ Experienced Cook Only</p>}
+      <p>{description}</p>
 
       <Button variant="destructive" size="sm" onClick={() => removeRecipe(id)}>
         Delete

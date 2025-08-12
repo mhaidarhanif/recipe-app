@@ -17,19 +17,6 @@ import { RecipeCard } from "@/modules/recipe/components/recipe-card";
 export function App() {
   const [recipes, setRecipes] = useState(dataRecipes);
 
-  const addRecipe = () => {
-    const newRecipe: DataRecipe = {
-      id: recipes.length + 1,
-      name: "New Recipe",
-      description: "Details of the cooking",
-      isBeginner: true,
-    };
-
-    const updatedRecipes = [...recipes, newRecipe];
-
-    setRecipes(updatedRecipes);
-  };
-
   const removeRecipe = (id: number) => {
     const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
     setRecipes(updatedRecipes);
@@ -39,23 +26,28 @@ export function App() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const name = formData.get("name");
-    const description = formData.get("description");
+    const name = formData.get("name")?.toString();
+    const description = formData.get("description")?.toString();
 
-    const newRecipe = {
+    if (!name) return;
+    if (!description) return;
+
+    const newRecipe: DataRecipe = {
+      id: recipes[recipes.length - 1].id + 1,
       name,
       description,
+      isBeginner: true,
     };
 
-    console.log(newRecipe);
+    const updatedRecipes = [...recipes, newRecipe];
+
+    setRecipes(updatedRecipes);
   };
 
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-xl space-y-10 bg-green-100 p-2 sm:p-8 dark:bg-green-950">
         <h1 className="text-3xl font-bold">Recipe App</h1>
-
-        <Button onClick={addRecipe}>Add Recipe</Button>
 
         <section className="mt-8 max-w-md">
           <Card>
@@ -105,6 +97,7 @@ export function App() {
                   <RecipeCard
                     id={recipe.id}
                     name={recipe.name}
+                    description={recipe.description}
                     isBeginner={recipe.isBeginner}
                     removeRecipe={removeRecipe}
                   />
