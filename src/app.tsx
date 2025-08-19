@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,14 @@ import { dataRecipes, type DataRecipe } from "@/modules/recipe/data";
 import { RecipeCard } from "@/modules/recipe/components/recipe-card";
 
 export function App() {
-  const [recipes, setRecipes] = useState(dataRecipes);
+  const [recipes, setRecipes] = useState(() => {
+    const storedRecipes = localStorage.getItem("count");
+    return storedRecipes ? JSON.parse(storedRecipes) : dataRecipes;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+  }, [recipes]);
 
   const removeRecipe = (id: number) => {
     const updatedRecipes = recipes.filter((recipe) => recipe.id !== id);
