@@ -16,8 +16,10 @@ import { RecipeCard } from "@/modules/recipe/components/recipe-card";
 
 export function App() {
   const [recipes, setRecipes] = useState(() => {
-    const storedRecipes = localStorage.getItem("count");
-    return storedRecipes ? JSON.parse(storedRecipes) : dataRecipes;
+    const storedRecipes = localStorage.getItem("recipes");
+    return storedRecipes
+      ? (JSON.parse(storedRecipes) as DataRecipe[])
+      : dataRecipes;
   });
 
   useEffect(() => {
@@ -50,6 +52,8 @@ export function App() {
 
     setRecipes(updatedRecipes);
   };
+
+  console.log({ recipes });
 
   return (
     <div className="flex justify-center">
