@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 export function RecipeCard({
   id,
@@ -20,6 +21,10 @@ export function RecipeCard({
       </h2>
 
       <p>{description}</p>
+
+      <Button asChild variant="outline" size="sm">
+        <Link to={`/recipes/${id}`}>View</Link>
+      </Button>
 
       <Button variant="destructive" size="sm" onClick={() => removeRecipe(id)}>
         Delete
