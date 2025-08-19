@@ -4,6 +4,7 @@ import { App } from "./app";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { About } from "./routes/about";
 import { Navbar } from "./components/shared/navbar";
+import { Counter } from "./routes/counter";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ createRoot(document.getElementById("root")!).render(
     <Routes>
       <Route index element={<App />} />
       <Route path="/about" element={<About />} />
+      <Route path="/counter" element={<Counter />} />
     </Routes>
   </BrowserRouter>,
 );
