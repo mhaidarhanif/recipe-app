@@ -3,9 +3,7 @@ import { useParams } from "react-router";
 
 export function RecipeId() {
   const params = useParams();
-
   const id = Number(params.id);
-
   const storedRecipes = localStorage.getItem("recipes") || "[]";
   const recipes = JSON.parse(storedRecipes) as DataRecipe[];
   const recipe = recipes.find((recipe) => recipe.id === id);
@@ -22,6 +20,14 @@ export function RecipeId() {
     <div>
       <h1>{recipe.name}</h1>
       <p>{recipe.description}</p>
+
+      {recipe.ingredients && recipe.ingredients.length && (
+        <ul>
+          {recipe.ingredients.map((ingredient) => {
+            return <li key={ingredient}>{ingredient}</li>;
+          })}
+        </ul>
+      )}
     </div>
   );
 }

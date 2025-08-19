@@ -46,6 +46,7 @@ export function App() {
       name,
       description,
       isBeginner: true,
+      ingredients: [],
     };
 
     const updatedRecipes = [...recipes, newRecipe];
